@@ -1,0 +1,319 @@
+/* 
+////////////////////////////////
+author: Carlos Gabriel
+Design: Gabriel França
+////////////////////////////////
+*/
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+html, body {
+    height: 100%;
+    background: #e5e5e5;
+}
+
+.clear {
+    clear: both;
+}
+/* -------- */
+
+.container {
+    width: 100%;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 360px;
+    height: 100vh;
+    min-height: 464px;
+    max-height: 760px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 24px 16.5px 64px 16.5px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+/* estilização da top bar */
+
+.top-bar {
+    width: 100%;
+}
+
+.tipo {
+    display: flex;
+    float: left;
+    height: 100%;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-tipo {
+    display: flex;
+    background: rgba(227, 242, 253, 0.3);
+    width: 142px;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-tipo{
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: #2196F3;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+select:focus {
+    border: none;
+    outline: 0;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.inverter {
+    display: flex;
+    float: right;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone {
+    border: none;
+    display: flex;
+    width: 44px;
+    height: 44px;
+    background: rgba(227, 242, 253, 0.3);
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.icone:hover {
+    cursor: pointer;
+}
+
+.icone:focus {
+    border: none;
+    outline: 0;
+    box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 20%);
+}
+
+/* estilização da tela principal */
+
+.screen {
+    width: 100%;
+}
+
+.de {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    padding: 30px 16px;
+    border-bottom: 1px solid #CFD8DC;
+    align-items: center;
+    justify-content: center;
+}
+
+.unidades {
+    display: flex;
+}
+
+.select-unidades {
+    border: none;
+    background: transparent;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #455A64;
+}
+
+.valor1, .valor2 {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.valor1 p, .valor2 p{
+    display: inline-block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(38, 50, 56, 0.87);
+}
+
+.valor1 .bg-unidade, .valor2 .bg-unidade {
+    margin-left: 8px;
+    width: 37px;
+    height: 22px;
+    background: #ECEFF1;
+    border-radius: 4px;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.valor1 .unidade, .valor2 .unidade {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.para {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    padding: 30px 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+/*estilização das teclas */
+
+.keys {
+    width: 100%;
+    max-height: 339px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "sete oito nove back"
+    "quatro cinco seis limpar"
+    "um dois tres mais"
+    "zero zero virgula menos"
+    ;
+    grid-gap: 8px;
+}
+
+.keys > button {
+    display: flex;
+    max-height: 78px;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 37px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.keys > button:focus {
+    border: none;
+    outline: 0;
+    box-shadow: 0px 0px 4px 0px rgb(0 0 0 / 20%);
+}
+
+.keys > button:not(.back, .limpar, .mais, .menos):hover {
+    background: #E3F2FD;
+    cursor: pointer;
+}
+
+.keys > button:not(.back, .limpar, .mais, .menos) {
+    background: rgba(227, 242, 253, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: rgba(38, 50, 56, 0.87);
+    font-weight: 400;
+}
+
+.back, .limpar, .mais, .menos {
+    border: none;
+    background: #2196F3;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.back:hover, .limpar:hover, .mais:hover, .menos:hover {
+    cursor: pointer;
+    box-shadow: 0px 1px 16px 2px rgb(0 0 0 / 20%);
+}
+
+/* grids areas das teclas */
+
+.sete {
+    grid-area: sete;
+}
+
+.oito {
+    grid-area: oito;
+}
+
+.nove {
+    grid-area: nove;
+}
+
+.back {
+    grid-area: back;
+}
+
+.quatro {
+    grid-area: quatro;
+}
+
+.cinco {
+    grid-area: cinco;
+}
+
+.seis {
+    grid-area: seis;
+}
+
+.limpar {
+    grid-area: limpar;
+}
+
+.um {
+    grid-area: um;
+}
+
+.dois {
+    grid-area: dois;
+}
+
+.tres {
+    grid-area: tres;
+}
+
+.mais {
+    grid-area: mais;
+}
+
+.zero {
+    grid-area: zero;
+}
+
+.virgula {
+    grid-area: virgula;
+}
+
+.menos {
+    grid-area: menos;
+}

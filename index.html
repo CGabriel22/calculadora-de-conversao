@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="uma calculadora para conversão rápida de unidades">
+    <meta name="author" content="Carlos Gabriel">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Calculadora de conversão</title>
+    <link rel="stylesheet" href="Css/index.css">
+    <link rel="icon" href="img/icone.png">
+
+</head>
+<body>
+    <div class="container"> <!--container-->
+        <section class="calculator"> <!--inicio da calculadora-->
+
+            <div class="top-bar"> <!--barra superior-->
+                <div class="tipo"> <!--container do tipo-->
+                    <div class="bg-tipo"> <!--container para background do tipo-->
+                        <select name="tipo" id="tipo" class="select-tipo">
+                            <option value="comprimento">Comprimento</option>
+                            <option value="area">Area</option>
+                            <option value="tempo">Tempo</option>
+                            <option value="peso">Peso</option>
+                        </select>
+                    </div> <!--fim do container para background do tipo-->
+                </div> <!--fim do container do tipo-->
+                <div class="inverter"> <!--container do botão inverter-->
+                    <button class="icone">
+                        <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.5 14.01V7H9.5V14.01H6.5L10.5 18L14.5 14.01H11.5ZM4.5 0L0.5 3.99H3.5V11H5.5V3.99H8.5L4.5 0Z" fill="#2196F3"/>
+                        </svg>
+                    </button>      
+                </div>  <!--fim do container do botão inverter-->
+                <div class="clear"></div> <!--div para limpar a flutuação-->
+            </div> <!--fim barra superior-->
+
+            <div class="screen"><!--tela-->
+
+                <div class="de"> <!--container para a informação de entrada-->
+                    <div class="unidades"> <!--container para unidades-->
+                        <select name="unidades" id="unidades" class="select-unidades">
+                            <option value="milimetro">Milimetros</option>
+                            <option value="centimetros">Centimetros</option>
+                            <option value="metros">Metros</option>
+                        </select>
+                    </div> <!--fim do container para unidades-->
+
+                    <div class="valor1"> <!--container para o valor da informação de entrada-->
+                        <p>269</p> <!--valor de entrada-->
+                        <div class="bg-unidade"> <!--container da unidade-->
+                            <p class="unidade">mm</p> <!--unidade-->
+                        </div> <!--fim do container da unidade-->
+                    </div> <!--fim do container para o valor da informação de entrada-->
+                </div> <!--fim do container para a informação de entrada-->
+
+                <div class="para"> <!--container para a informação de saida-->
+                    <div class="unidades"> <!--container para unidades-->
+                        <select name="unidades" id="unidades" class="select-unidades">
+                            <option value="centimetros">Centimetros</option>
+                            <option value="milimetro">Milimetros</option>
+                            <option value="metros">Metros</option>
+                        </select>
+                    </div> <!--fim do container para unidades-->
+
+                    <div class="valor2"> <!--container para o valor da informação de saida-->
+                        <p>26,9</p> <!--valor de saida-->
+                        <div class="bg-unidade"> <!--container da unidade-->
+                            <p class="unidade">cm</p> <!--unidade-->
+                        </div> <!--fim do container da unidade-->
+                    </div> <!--fim do container para o valor da informação de saida-->
+                </div> <!--fim do container para a informação de saida-->
+
+            </div> <!--fim tela-->
+
+            <div class="keys"> <!--container das teclas-->
+                <button class="sete">7</button> <!--tecla sete-->
+                <button class="oito">8</button> <!--tecla oito-->
+                <button class="nove">9</button> <!--tecla nove-->
+                <button class="back"> <!--tecla de exclusão-->
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                        <path d="M22.5 3H7.5C6.81 3 6.27 3.35 5.91 3.88L0.5 12L5.91 20.11C6.27 20.64 6.81 21 7.5 21H22.5C23.6 21 24.5 20.1 24.5 19V5C24.5 3.9 23.6 3 22.5 3ZM19.5 15.59L18.09 17L14.5 13.41L10.91 17L9.5 15.59L13.09 12L9.5 8.41L10.91 7L14.5 10.59L18.09 7L19.5 8.41L15.91 12L19.5 15.59Z" fill="white"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0">
+                        <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+                        </clipPath>
+                        </defs>
+                    </svg>      
+                </button> <!--fim da tecla de exclusão-->
+                <button class="quatro">4</button> <!--tecla quatro-->
+                <button class="cinco">5</button> <!--tecla cinco-->
+                <button class="seis">6</button> <!--tecla seis-->
+                <button class="limpar">C</button> <!--tecla de limpar-->
+                <button class="um">1</button>  <!--tecla um-->
+                <button class="dois">2</button> <!--tecla dois-->
+                <button class="tres">3</button> <!--tecla três-->
+                <button class="mais">+1</button> <!--tecla de adição-->
+                <button class="zero">0</button>  <!--tecla zero-->
+                <button class="virgula">,</button> <!--tecla de virgula-->
+                <button class="menos">-1</button> <!--tecla de diminuir-->
+            </div> <!--fim do container das teclas-->
+
+        </section> <!--fim calculadora-->
+    </div> <!--fim container-->
+</body>
+</html>
