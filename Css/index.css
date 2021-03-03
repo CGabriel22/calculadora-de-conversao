@@ -195,6 +195,11 @@ select:hover {
     justify-content: center;
 }
 
+#entrada {
+    max-width: 148px;
+    overflow: hidden;
+}
+
 /*estilização das teclas */
 
 .keys {

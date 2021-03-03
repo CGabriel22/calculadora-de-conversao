@@ -42,34 +42,42 @@
 
                 <div class="de"> <!--container para a informação de entrada-->
                     <div class="unidades"> <!--container para unidades-->
-                        <select name="unidades" id="unidades" class="select-unidades">
-                            <option value="milimetro">Milimetros</option>
-                            <option value="centimetros">Centimetros</option>
-                            <option value="metros">Metros</option>
+                        <select onchange="alterar_unidade('entrada')" name="unidades" id="unidades-entrada" class="select-unidades">
+                            <option value="mm">Milimetros</option>
+                            <option value="cm">Centímetros</option>
+                            <option value="dm">Decímetros</option>
+                            <option value="m">Metros</option>
+                            <option value="dam">Decâmetros</option>
+                            <option value="hm">Hectômetros</option>
+                            <option value="km">Quilômetros</option>
                         </select>
                     </div> <!--fim do container para unidades-->
 
                     <div class="valor1"> <!--container para o valor da informação de entrada-->
-                        <p>269</p> <!--valor de entrada-->
+                        <p id="entrada">0</p> <!--valor de entrada-->
                         <div class="bg-unidade"> <!--container da unidade-->
-                            <p class="unidade">mm</p> <!--unidade-->
+                            <p id="unidade-entrada" class="unidade">mm</p> <!--unidade-->
                         </div> <!--fim do container da unidade-->
                     </div> <!--fim do container para o valor da informação de entrada-->
                 </div> <!--fim do container para a informação de entrada-->
 
                 <div class="para"> <!--container para a informação de saida-->
                     <div class="unidades"> <!--container para unidades-->
-                        <select name="unidades" id="unidades" class="select-unidades">
-                            <option value="centimetros">Centimetros</option>
-                            <option value="milimetro">Milimetros</option>
-                            <option value="metros">Metros</option>
+                        <select onchange="alterar_unidade('saida')" name="unidades" id="unidades-saida" class="select-unidades">
+                            <option value="mm">Milimetros</option>
+                            <option value="cm">Centímetros</option>
+                            <option value="dm">Decímetros</option>
+                            <option value="m">Metros</option>
+                            <option value="dam">Decâmetros</option>
+                            <option value="hm">Hectômetros</option>
+                            <option value="km">Quilômetros</option>
                         </select>
                     </div> <!--fim do container para unidades-->
 
                     <div class="valor2"> <!--container para o valor da informação de saida-->
-                        <p>26,9</p> <!--valor de saida-->
+                        <p>0</p> <!--valor de saida-->
                         <div class="bg-unidade"> <!--container da unidade-->
-                            <p class="unidade">cm</p> <!--unidade-->
+                            <p id="unidade-saida" class="unidade">mm</p> <!--unidade-->
                         </div> <!--fim do container da unidade-->
                     </div> <!--fim do container para o valor da informação de saida-->
                 </div> <!--fim do container para a informação de saida-->
@@ -77,10 +85,10 @@
             </div> <!--fim tela-->
 
             <div class="keys"> <!--container das teclas-->
-                <button class="sete">7</button> <!--tecla sete-->
-                <button class="oito">8</button> <!--tecla oito-->
-                <button class="nove">9</button> <!--tecla nove-->
-                <button class="back"> <!--tecla de exclusão-->
+                <button onclick="alterar_valor('n', 7)" class="sete">7</button> <!--tecla sete-->
+                <button onclick="alterar_valor('n', 8)" class="oito">8</button> <!--tecla oito-->
+                <button onclick="alterar_valor('n', 9)" class="nove">9</button> <!--tecla nove-->
+                <button onclick="alterar_valor('a', 'back')" class="back"> <!--tecla de exclusão-->
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0)">
                         <path d="M22.5 3H7.5C6.81 3 6.27 3.35 5.91 3.88L0.5 12L5.91 20.11C6.27 20.64 6.81 21 7.5 21H22.5C23.6 21 24.5 20.1 24.5 19V5C24.5 3.9 23.6 3 22.5 3ZM19.5 15.59L18.09 17L14.5 13.41L10.91 17L9.5 15.59L13.09 12L9.5 8.41L10.91 7L14.5 10.59L18.09 7L19.5 8.41L15.91 12L19.5 15.59Z" fill="white"/>
@@ -92,20 +100,22 @@
                         </defs>
                     </svg>      
                 </button> <!--fim da tecla de exclusão-->
-                <button class="quatro">4</button> <!--tecla quatro-->
-                <button class="cinco">5</button> <!--tecla cinco-->
-                <button class="seis">6</button> <!--tecla seis-->
-                <button class="limpar">C</button> <!--tecla de limpar-->
-                <button class="um">1</button>  <!--tecla um-->
-                <button class="dois">2</button> <!--tecla dois-->
-                <button class="tres">3</button> <!--tecla três-->
-                <button class="mais">+1</button> <!--tecla de adição-->
-                <button class="zero">0</button>  <!--tecla zero-->
-                <button class="virgula">,</button> <!--tecla de virgula-->
-                <button class="menos">-1</button> <!--tecla de diminuir-->
+                <button onclick="alterar_valor('n', 4)" class="quatro">4</button> <!--tecla quatro-->
+                <button onclick="alterar_valor('n', 5)" class="cinco">5</button> <!--tecla cinco-->
+                <button onclick="alterar_valor('n', 6)" class="seis">6</button> <!--tecla seis-->
+                <button onclick="alterar_valor('a', 'limpar')" class="limpar">C</button> <!--tecla de limpar-->
+                <button onclick="alterar_valor('n', 1)" class="um">1</button>  <!--tecla um-->
+                <button onclick="alterar_valor('n', 2)" class="dois">2</button> <!--tecla dois-->
+                <button onclick="alterar_valor('n', 3)" class="tres">3</button> <!--tecla três-->
+                <button onclick="alterar_valor('a', 'mais')" class="mais">+1</button> <!--tecla de adição-->
+                <button onclick="alterar_valor('n', 0)" class="zero">0</button>  <!--tecla zero-->
+                <button onclick="alterar_valor('n', '.')" class="virgula">,</button> <!--tecla de virgula-->
+                <button onclick="alterar_valor('a', 'menos')" class="menos">-1</button> <!--tecla de diminuir-->
             </div> <!--fim do container das teclas-->
 
         </section> <!--fim calculadora-->
     </div> <!--fim container-->
+
+    <script src="Js/app.js"></script>
 </body>
 </html>
