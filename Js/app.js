@@ -1,3 +1,25 @@
+function inverter() {
+    let unidades_entrada = document.getElementById('unidades-entrada').selectedIndex
+    let unidades_saida = document.getElementById('unidades-saida').selectedIndex
+    let valor_entrada = document.getElementById('entrada').innerHTML
+    let valor_saida = document.getElementById('saida').innerHTML
+
+    console.log('unidade de entrada: '+unidades_entrada)
+    console.log('unidade de saida: '+unidades_saida)
+    console.log('valor de entrada: '+valor_entrada)
+    console.log('valor de saida: '+valor_saida)
+
+    document.getElementById('unidades-entrada').selectedIndex = unidades_saida
+    document.getElementById('unidades-saida').selectedIndex = unidades_entrada
+    document.getElementById('entrada').innerHTML = valor_saida
+    document.getElementById('saida').innerHTML = valor_entrada
+
+    let unidade_entrada = document.getElementById('unidades-entrada').value
+    let unidade_saida = document.getElementById('unidades-saida').value
+    document.getElementById('unidade-entrada').innerText = unidade_entrada
+    document.getElementById('unidade-saida').innerText = unidade_saida
+}
+
 function alterar_unidade(qual) {
     let unidades_entrada = document.getElementById('unidades-entrada').value
     let unidades_saida = document.getElementById('unidades-saida').value
