@@ -70,8 +70,405 @@ function converter(valor_entrada) {
     let tipo = document.getElementById('tipo').value
     let unidades_entrada = document.getElementById('unidades-entrada').value
     let unidades_saida = document.getElementById('unidades-saida').value
+    let valor_entrada_num = parseFloat(valor_entrada);
+    let valor_saida = 0;
     console.log('tipo: '+tipo)
     console.log('valor de entrada: '+valor_entrada)
     console.log('unidades de entrada: '+unidades_entrada)
     console.log('unidades de saida: '+unidades_saida)
+
+    console.log('---------------------')
+
+    if(tipo == 'comprimento') {
+        switch (unidades_entrada) {
+            case 'mm':
+                console.log('unidade de entrada entrou no laço de mm')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = (valor_entrada_num/10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = (valor_entrada_num/100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = (valor_entrada_num/1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = (valor_entrada_num/10000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = (valor_entrada_num/100000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = (valor_entrada_num/10000000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+            case 'cm':
+                console.log('unidade de entrada entrou no laço de cm')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = (valor_entrada_num*10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = (valor_entrada_num/10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = (valor_entrada_num/100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = (valor_entrada_num/1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = (valor_entrada_num/10000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = (valor_entrada_num/100000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+            case 'dm':
+                console.log('unidade de entrada entrou no laço de dm')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = (valor_entrada_num*100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = (valor_entrada_num*10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = (valor_entrada_num/10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = (valor_entrada_num/100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = (valor_entrada_num/1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = (valor_entrada_num/10000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+            case 'm':
+                console.log('unidade de entrada entrou no laço de m')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = (valor_entrada_num*1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = (valor_entrada_num*100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = (valor_entrada_num*10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = (valor_entrada_num/10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = (valor_entrada_num/100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = (valor_entrada_num/1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+            case 'dam':
+                console.log('unidade de entrada entrou no laço de dam')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = (valor_entrada_num*10000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = (valor_entrada_num*1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = (valor_entrada_num*100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = (valor_entrada_num*10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = (valor_entrada_num/10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = (valor_entrada_num/100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+            case 'hm':
+                console.log('unidade de entrada entrou no laço de hm')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = (valor_entrada_num*100000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = (valor_entrada_num*10000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = (valor_entrada_num*1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = (valor_entrada_num*100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = (valor_entrada_num*10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = (valor_entrada_num/10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+            case 'km':
+                console.log('unidade de entrada entrou no laço de km')
+                console.log('----------------------')
+
+                switch (unidades_saida) {
+                    case 'mm':
+                        console.log('unidade de saida entrou no laço de mm')
+                        valor_saida = (valor_entrada_num*1000000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'cm':
+                        console.log('unidade de saida entrou no laço de cm')
+
+                        valor_saida = (valor_entrada_num*100000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dm':
+                        console.log('unidade de saida entrou no laço de dm')
+
+                        valor_saida = (valor_entrada_num*10000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'm':
+                        console.log('unidade de saida entrou no laço de m')
+
+                        valor_saida = (valor_entrada_num*1000)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'dam':
+                        console.log('unidade de saida entrou no laço de dam')
+
+                        valor_saida = (valor_entrada_num*100)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'hm':
+                        console.log('unidade de saida entrou no laço de hm')
+
+                        valor_saida = (valor_entrada_num*10)
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                    case 'km':
+                        console.log('unidade de saida entrou no laço de km')
+
+                        valor_saida = valor_entrada_num
+
+                        console.log('resultado:'+valor_saida)
+                        break;
+                }
+                break;
+        }
+    }
+
+    valor_saida = valor_saida + ""
+    document.getElementById('saida').innerHTML = valor_saida
 }

@@ -20,11 +20,8 @@
             <div class="top-bar"> <!--barra superior-->
                 <div class="tipo"> <!--container do tipo-->
                     <div class="bg-tipo"> <!--container para background do tipo-->
-                        <select name="tipo" id="tipo" class="select-tipo">
+                        <select onchange="" name="tipo" id="tipo" class="select-tipo">
                             <option value="comprimento">Comprimento</option>
-                            <option value="area">Area</option>
-                            <option value="tempo">Tempo</option>
-                            <option value="peso">Peso</option>
                         </select>
                     </div> <!--fim do container para background do tipo-->
                 </div> <!--fim do container do tipo-->
@@ -75,7 +72,7 @@
                     </div> <!--fim do container para unidades-->
 
                     <div class="valor2"> <!--container para o valor da informação de saida-->
-                        <p>0</p> <!--valor de saida-->
+                        <p id="saida">0</p> <!--valor de saida-->
                         <div class="bg-unidade"> <!--container da unidade-->
                             <p id="unidade-saida" class="unidade">mm</p> <!--unidade-->
                         </div> <!--fim do container da unidade-->
