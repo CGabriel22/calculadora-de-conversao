@@ -1,91 +1,118 @@
-function inverter() {
-    let unidades_entrada = document.getElementById('unidades-entrada').selectedIndex
-    let unidades_saida = document.getElementById('unidades-saida').selectedIndex
-    let valor_entrada = document.getElementById('entrada').innerHTML
-    let valor_saida = document.getElementById('saida').innerHTML
-
-    console.log('unidade de entrada: '+unidades_entrada)
-    console.log('unidade de saida: '+unidades_saida)
-    console.log('valor de entrada: '+valor_entrada)
-    console.log('valor de saida: '+valor_saida)
-
-    document.getElementById('unidades-entrada').selectedIndex = unidades_saida
-    document.getElementById('unidades-saida').selectedIndex = unidades_entrada
-    document.getElementById('entrada').innerHTML = valor_saida
-    document.getElementById('saida').innerHTML = valor_entrada
-
-    let unidade_entrada = document.getElementById('unidades-entrada').value
-    let unidade_saida = document.getElementById('unidades-saida').value
-    document.getElementById('unidade-entrada').innerText = unidade_entrada
-    document.getElementById('unidade-saida').innerText = unidade_saida
-}
-
-function alterar_unidade(qual) {
-    let unidades_entrada = document.getElementById('unidades-entrada').value
-    let unidades_saida = document.getElementById('unidades-saida').value
-
-    if(qual == 'entrada') {
-        // console.log('mudar a unidade de entrada para: '+unidades_entrada)
-        document.getElementById('unidade-entrada').innerText = unidades_entrada
-    } else if(qual == 'saida') {
-        // console.log('mudar a unidade de saida para: '+unidades_saida)
-        document.getElementById('unidade-saida').innerText = unidades_saida
+//de 504 linhas para ...
+class Calculator {
+    //Características ou valores da calculadora
+    constructor() {
+        this.valor_entrada = document.querySelector('#entrada');
+        this.valor_saida = document.querySelector('#saida');
+        this.unidade_entrada = document.querySelector('#unidade-entrada');
+        this.unidade_saida = document.querySelector('#unidade-saida');
+        this.option_entrada = document.querySelector('#unidades-entrada');
+        this.option_saida = document.querySelector('#unidades-saida');
+    }
+    //Ações
+    reverse() {
+        let selectedExit = this.option_saida.selectedIndex;
+        let selectedGet = this.option_entrada.selectedIndex;
+        let exitValue = this.valor_saida.innerHTML;
+        let getValue = this.valor_entrada.innerHTML;
+        let exitUnity = this.unidade_saida.innerText;
+        let getUnity = this.unidade_entrada.innerText;
+        //opção selecionada de entrada passa a ser igual a opção selecionada de saida
+        this.option_entrada.selectedIndex = selectedExit;
+        //opção selecionada de saida passa a ser igual a opção selecionada de entrada
+        this.option_saida.selectedIndex = selectedGet;
+        //valor de entrada passa a ser igual ao valor de saida
+        this.valor_entrada.innerHTML = exitValue;
+        //valor de saida passa a ser igual ao valor de entrada
+        this.valor_saida.innerHTML = getValue;
+        //unidade de entrada passa a ser igual a unidade de saida
+        this.unidade_entrada.innerText = exitUnity;
+        //unidade de saida passa a ser igual a unidade de entrada
+        this.unidade_saida.innerText = getUnity;
     }
 
-    var valor_entrada = document.getElementById('entrada').innerHTML
-    converter(valor_entrada)
-}
+    changeUnit() {
+        let getUnity = this.option_entrada.value;
+        let exitUnity = this.option_saida.value;
+        //unidade de entrada passa a ser o valor da unidade selecionada nas opções de unidades de entrada
+        this.unidade_entrada.innerText = getUnity;
+        //unidade de saida passa a ser o valor da unidade selecionada nas opções de unidades de saida
+        this.unidade_saida.innerText = exitUnity;
+        //chama a função converter passando o valor de entrada
+        converter(this.valor_entrada.innerHTML)
+    }
 
-function alterar_valor(tipo, valor) {
-    var valor_entrada = document.getElementById('entrada').innerHTML
-
-    if(tipo == 'n') {
-        if(valor_entrada == '0' && valor != '.') {
-            document.getElementById('entrada').innerHTML = ''
-        }
-        document.getElementById('entrada').innerHTML += valor
+    changeValue(type='n', value='0') {
+        let getValue = this.valor_entrada.innerHTML
+        //condicional para verificar se é do tipo n(number) ou a(action)
+        if(type == 'n') {
+            //verifica se o valor inicial é igual a zero e se o valor inserido é diferente de "ponto"
+            if(getValue == '0' && value != '.') {
+                //caso o valor for zero e o valor inserido for diferente de "ponto", antes de concatenar o valor, ele deve ser zerado
+                this.valor_entrada.innerHTML = ''
+            }
+            //concatena o valor inserido ao final do valor inicial
+            this.valor_entrada.innerHTML += value
         
-    } else if(tipo == 'a') {
-        if(valor == 'limpar') {
-            document.getElementById('entrada').innerHTML = '0'
-            
-        } else if(valor == 'mais') {
-            valor_entrada = parseFloat(valor_entrada) + 1
-            valor_entrada = valor_entrada + ""
-            if(valor_entrada != 'NaN') {
-                document.getElementById('entrada').innerHTML = valor_entrada
-                
-            } else {
-                document.getElementById('entrada').innerHTML = '0'
-                
-            }
-        } else if(valor == 'menos') {
-            valor_entrada = parseFloat(valor_entrada) - 1
-            valor_entrada = valor_entrada + ""
-            if(valor_entrada != 'NaN') {
-                document.getElementById('entrada').innerHTML = valor_entrada
-                
-            } else {
-                document.getElementById('entrada').innerHTML = '0'
-                
-            }
-        } else if(valor == 'back') {
-            var valor_editado = valor_entrada.replace(" ", "-").substring(-1, valor_entrada.length - 1)
-            document.getElementById('entrada').innerHTML = valor_editado
-            valor_entrada = document.getElementById('entrada').innerHTML
-            if(valor_entrada == '' || valor_entrada == '-') {
-                document.getElementById('entrada').innerHTML = '0'
-                
+        } else if(type == 'a') {
+            if(value == 'limpar') {
+                //limpa o valor inicial o substituindo por zero
+                this.valor_entrada.innerHTML = '0'
+            } else if(value == 'mais') {
+                //casting de string para float para somar o valor inicial com 1 e substitui-lo na variável
+                getValue = parseFloat(getValue) + 1
+                //transforma o valor float em string somando-o a uma string vazia
+                getValue = getValue + ""
+                //verifica se o numero é diferente de Not a Number
+                if(getValue != 'NaN') {
+                    //se for, substitui o valor inicial pelo novo valor inicial
+                    this.valor_entrada.innerHTML = getValue
+                } else {
+                    //caso contrario, substitui o valor por zero
+                   this.valor_entrada.innerHTML = '0'
+                }
+            } else if(value == 'menos') {
+                //casting de string para float para subtrair o valor inicial com 1 e substitui-lo na variável
+                getValue = parseFloat(getValue) - 1
+                //transforma o valor float em string somando-o a uma string vazia
+                getValue = getValue + ""
+                //verifica se o numero é diferente de Not a Number
+                if(getValue != 'NaN') {
+                    //se for, substitui o valor inicial pelo novo valor inicial
+                    this.valor_entrada.innerHTML = getValue
+                } else {
+                    //caso contrario, substitui o valor por zero
+                   this.valor_entrada.innerHTML = '0'
+                }
+            } else if(value == 'back') {
+                //valor editado é igual ao valor inicial retirado seu último carácter
+                let editedValue = getValue.replace(" ", "-").substring(-1, getValue.length - 1)
+                //substitui o valor inicial pelo novo valor
+                this.valor_entrada.innerHTML = editedValue
+                //atualiza o valor da variável para passar por um teste
+                getValue = document.getElementById('entrada').innerHTML
+                //este teste, que verifica se o valor é vazio ou -
+                if(getValue == '' || getValue == '-') {
+                    //caso for, substitui por zero
+                    this.valor_entrada.innerHTML = '0'
+                }
             }
         }
-    }
-    if(valor_entrada.length > 10 && valor != 'back' && valor != 'limpar') {
-        alert('quantidade maxima de caracters atingida. A utilização de mais caracters pode resultar em um mal funcionamento do calculo')
+        if(getValue.length > 10 && value != 'back' && value != 'limpar') {
+            alert('quantidade maxima de caracters atingida. A utilização de mais caracters pode resultar em um mal funcionamento do calculo')
+        }
+
+        getValue = document.getElementById('entrada').innerHTML
+
+        converter(getValue)
     }
 
-    valor_entrada = document.getElementById('entrada').innerHTML
+}
 
-    converter(valor_entrada)
+var calculator = new Calculator();
+
+function alterar_valor(type, value) {
+    calculator.changeValue(type, value)
 }
 
 function converter(valor_entrada) {
@@ -494,3 +521,10 @@ function converter(valor_entrada) {
     valor_saida = valor_saida + ""
     document.getElementById('saida').innerHTML = valor_saida
 }
+
+//criar uma classe converter, onde será realizado a conversão.
+//cada unidade deve ser colocada em um objeto com seu calculo de conversão para metros e de metros para a unidade
+//desse forma, sempre que for converter passará apenas por uma condicional
+//a classe deve converter o valor de entrada para zero utilizando seu calculo ja guardado no objeto
+//após, deve converter os metros para a unidade de saida através do calculo ja guardado no objeto
+//dessa forma, deve-se facilitar a implementação de novas unidades e diminuir a qnt de condicional

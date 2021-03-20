@@ -26,7 +26,7 @@
                     </div> <!--fim do container para background do tipo-->
                 </div> <!--fim do container do tipo-->
                 <div class="inverter"> <!--container do botão inverter-->
-                    <button onclick="inverter()" class="icone">
+                    <button onclick="calculator.reverse()" class="icone">
                         <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.5 14.01V7H9.5V14.01H6.5L10.5 18L14.5 14.01H11.5ZM4.5 0L0.5 3.99H3.5V11H5.5V3.99H8.5L4.5 0Z" fill="#2196F3"/>
                         </svg>
@@ -39,7 +39,7 @@
 
                 <div class="de"> <!--container para a informação de entrada-->
                     <div class="unidades"> <!--container para unidades-->
-                        <select onchange="alterar_unidade('entrada')" name="unidades" id="unidades-entrada" class="select-unidades">
+                        <select onchange="calculator.changeUnit()" name="unidades" id="unidades-entrada" class="select-unidades">
                             <option value="mm">Milimetros</option>
                             <option value="cm">Centímetros</option>
                             <option value="dm">Decímetros</option>
@@ -60,7 +60,7 @@
 
                 <div class="para"> <!--container para a informação de saida-->
                     <div class="unidades"> <!--container para unidades-->
-                        <select onchange="alterar_unidade('saida')" name="unidades" id="unidades-saida" class="select-unidades">
+                        <select onchange="calculator.changeUnit()" name="unidades" id="unidades-saida" class="select-unidades">
                             <option value="mm">Milimetros</option>
                             <option value="cm">Centímetros</option>
                             <option value="dm">Decímetros</option>
