@@ -1,4 +1,156 @@
-//de 504 linhas para ...
+const calcUnits = {
+    mm: {
+        forMain(n){
+            let calc = (n / 1000);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n / 1000).toFixed(6)
+                return calc
+            }
+            
+        },
+        ofMain(n){
+            let calc = (n * 1000);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n * 1000).toFixed(6)
+                return calc
+            }
+        }
+    },
+    cm: {
+        forMain(n){
+            let calc = (n / 100);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n / 100).toFixed(6)
+                return calc
+            }
+        },
+        ofMain(n){
+            let calc = (n * 100);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n * 100).toFixed(6)
+                return calc
+            }
+        }
+    },
+    dm: {
+        forMain(n){
+            let calc = (n / 10);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n / 10).toFixed(6)
+                return calc
+            }
+        },
+        ofMain(n){
+            let calc = (n * 10);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n * 10).toFixed(6)
+                return calc
+            }
+        }
+    },
+    m: {
+        forMain(n){
+            return n;
+        },
+        ofMain(n){
+            return n;
+        }
+    },
+    dam: {
+        forMain(n){
+            let calc = (n * 10);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n * 10).toFixed(6)
+                return calc
+            }
+        },
+        ofMain(n){
+            let calc = (n / 10);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n / 10).toFixed(6)
+                return calc
+            }
+        }
+    },
+    hm: {
+        forMain(n){
+            let calc = (n * 100);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n * 100).toFixed(6)
+                return calc
+            }
+        },
+        ofMain(n){
+            let calc = (n / 100);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n / 100).toFixed(6)
+                return calc
+            }
+        }
+    },
+    km: {
+        forMain(n){
+            let calc = (n * 1000);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n * 1000).toFixed(6)
+                return calc
+            }
+        },
+        ofMain(n){
+            let calc = (n / 1000);
+            let verifica = verificarTamanho(calc)
+            if(verifica == 'verdade'){
+                return calc
+            } else {
+                calc = (n / 1000).toFixed(6)
+                return calc
+            }
+        }
+    }
+}
+
+function verificarTamanho(r) {
+    r = r+""
+    if(r.length > 6) {
+        return 'falso'
+    } else{
+        return 'verdade'
+    }
+}
+
 class Calculator {
     //Características ou valores da calculadora
     constructor() {
@@ -8,6 +160,7 @@ class Calculator {
         this.unidade_saida = document.querySelector('#unidade-saida');
         this.option_entrada = document.querySelector('#unidades-entrada');
         this.option_saida = document.querySelector('#unidades-saida');
+        this.type_of_measure = document.querySelector('#tipo');
     }
     //Ações
     reverse() {
@@ -39,7 +192,7 @@ class Calculator {
         //unidade de saida passa a ser o valor da unidade selecionada nas opções de unidades de saida
         this.unidade_saida.innerText = exitUnity;
         //chama a função converter passando o valor de entrada
-        converter(this.valor_entrada.innerHTML)
+        this.conversor()
     }
 
     changeValue(type='n', value='0') {
@@ -102,429 +255,42 @@ class Calculator {
             alert('quantidade maxima de caracters atingida. A utilização de mais caracters pode resultar em um mal funcionamento do calculo')
         }
 
-        getValue = document.getElementById('entrada').innerHTML
+        this.valor_entrada = document.querySelector('#entrada');
 
-        converter(getValue)
+        this.conversor()
+    }
+
+    conversor() {
+
+        let typeOfMeasure = this.type_of_measure.value
+        let getUnity = this.option_entrada.value
+        let exitUnity = this.option_saida.value
+        let getValue = parseFloat(this.valor_entrada.innerHTML);
+        let exitValue = 0;
+
+        console.log(`tipo de medida: ${typeOfMeasure}`)
+        console.log(`unidade de entrada: ${getUnity}`)
+        console.log(`unidade de saida: ${exitUnity}`)
+        console.log(`valor de entrada: ${getValue}`)
+        console.log(`valor de saida: ${exitValue}`)
+
+        let helpValue = calcUnits[getUnity].forMain(getValue)
+        console.log('----------------------------')
+        console.log(`valor auxiliar: ${helpValue}`)
+
+        exitValue = calcUnits[exitUnity].ofMain(helpValue)
+
+        console.log('----------------------------')
+        console.log(`resultado: ${exitValue}`)
+
+        exitValue = exitValue + ""
+        document.getElementById('saida').innerHTML = exitValue
+
     }
 
 }
-
 var calculator = new Calculator();
 
-function alterar_valor(type, value) {
-    calculator.changeValue(type, value)
-}
-
-function converter(valor_entrada) {
-    let tipo = document.getElementById('tipo').value
-    let unidades_entrada = document.getElementById('unidades-entrada').value
-    let unidades_saida = document.getElementById('unidades-saida').value
-    let valor_entrada_num = parseFloat(valor_entrada);
-    let valor_saida = 0;
-    console.log('tipo: '+tipo)
-    console.log('valor de entrada: '+valor_entrada)
-    console.log('unidades de entrada: '+unidades_entrada)
-    console.log('unidades de saida: '+unidades_saida)
-
-    console.log('---------------------')
-
-    if(tipo == 'comprimento') {
-        switch (unidades_entrada) {
-            case 'mm':
-                console.log('unidade de entrada entrou no laço de mm')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = (valor_entrada_num/10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = (valor_entrada_num/100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = (valor_entrada_num/1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = (valor_entrada_num/10000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = (valor_entrada_num/100000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = (valor_entrada_num/10000000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-            case 'cm':
-                console.log('unidade de entrada entrou no laço de cm')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = (valor_entrada_num*10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = (valor_entrada_num/10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = (valor_entrada_num/100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = (valor_entrada_num/1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = (valor_entrada_num/10000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = (valor_entrada_num/100000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-            case 'dm':
-                console.log('unidade de entrada entrou no laço de dm')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = (valor_entrada_num*100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = (valor_entrada_num*10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = (valor_entrada_num/10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = (valor_entrada_num/100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = (valor_entrada_num/1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = (valor_entrada_num/10000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-            case 'm':
-                console.log('unidade de entrada entrou no laço de m')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = (valor_entrada_num*1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = (valor_entrada_num*100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = (valor_entrada_num*10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = (valor_entrada_num/10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = (valor_entrada_num/100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = (valor_entrada_num/1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-            case 'dam':
-                console.log('unidade de entrada entrou no laço de dam')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = (valor_entrada_num*10000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = (valor_entrada_num*1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = (valor_entrada_num*100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = (valor_entrada_num*10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = (valor_entrada_num/10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = (valor_entrada_num/100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-            case 'hm':
-                console.log('unidade de entrada entrou no laço de hm')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = (valor_entrada_num*100000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = (valor_entrada_num*10000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = (valor_entrada_num*1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = (valor_entrada_num*100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = (valor_entrada_num*10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = (valor_entrada_num/10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-            case 'km':
-                console.log('unidade de entrada entrou no laço de km')
-                console.log('----------------------')
-
-                switch (unidades_saida) {
-                    case 'mm':
-                        console.log('unidade de saida entrou no laço de mm')
-                        valor_saida = (valor_entrada_num*1000000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'cm':
-                        console.log('unidade de saida entrou no laço de cm')
-
-                        valor_saida = (valor_entrada_num*100000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dm':
-                        console.log('unidade de saida entrou no laço de dm')
-
-                        valor_saida = (valor_entrada_num*10000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'm':
-                        console.log('unidade de saida entrou no laço de m')
-
-                        valor_saida = (valor_entrada_num*1000)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'dam':
-                        console.log('unidade de saida entrou no laço de dam')
-
-                        valor_saida = (valor_entrada_num*100)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'hm':
-                        console.log('unidade de saida entrou no laço de hm')
-
-                        valor_saida = (valor_entrada_num*10)
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                    case 'km':
-                        console.log('unidade de saida entrou no laço de km')
-
-                        valor_saida = valor_entrada_num
-
-                        console.log('resultado:'+valor_saida)
-                        break;
-                }
-                break;
-        }
-    }
-
-    valor_saida = valor_saida + ""
-    document.getElementById('saida').innerHTML = valor_saida
-}
-
-//criar uma classe converter, onde será realizado a conversão.
-//cada unidade deve ser colocada em um objeto com seu calculo de conversão para metros e de metros para a unidade
-//desse forma, sempre que for converter passará apenas por uma condicional
-//a classe deve converter o valor de entrada para zero utilizando seu calculo ja guardado no objeto
-//após, deve converter os metros para a unidade de saida através do calculo ja guardado no objeto
-//dessa forma, deve-se facilitar a implementação de novas unidades e diminuir a qnt de condicional
+//futuras correções:
+//novas verificações para impedir o fixed de fixar os numeros decimais em 6 quando: o numero for inteiro
+//retirar os zeros do final dos numeros
